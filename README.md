@@ -1,8 +1,8 @@
 # adaptive-vehicle-headlamps
 A mini project demonstrating automatic adaptive headlamp control in vehicles.
 
-##The Objective
+# The Objective
 
-##The Theory
+# The Theory
 
-##The Project
+# The Project
