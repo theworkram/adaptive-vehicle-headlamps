@@ -40,5 +40,5 @@ void loop()
       {
         analogWrite(6,0);
         delay(5);
-      }                         // range of intensities for LED
+      }                         // range of intensities for LED 
 }
