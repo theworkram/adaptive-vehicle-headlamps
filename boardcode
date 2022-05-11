@@ -1,0 +1,44 @@
+int ldr_intensity, total, average;
+void setup()
+{
+  Serial.begin(9600);             //set baud rate to 9600
+  pinMode(A0,INPUT);                 // set analog input to pin A0, where the LDR must be connected
+  pinMode(6,OUTPUT);                 // set analog output to pin 6, where the LED must be connected
+}
+void loop()
+{
+       ldr_intensity = analogRead(A0);
+       total = 0; average = 0;         // reset variables every cycle
+       for(int i=0; i<10; i++)
+       {
+        delay(45);                    // optimal time-resolution for LDR light detection
+        total = total + ldr_intensity;
+       }
+       average = total/10;            // normalized output values for LED intensity
+       Serial.println(average);
+       if (average>=100)
+      {
+        analogWrite(6,240);
+        delay(5);
+      }
+      else if (average<100 && average>=60)
+      {
+        analogWrite(6,180);
+        delay(5);
+      }
+      else if (average<60 && average>=20)
+      {
+        analogWrite(6,120);
+        delay(5);
+      }
+      else if (average<20 && average>1)
+      {
+        analogWrite(6,60);
+        delay(5);
+      }
+      else if(average<=1)
+      {
+        analogWrite(6,0);
+        delay(5);
+      }                         // range of intensities for LED
+}
